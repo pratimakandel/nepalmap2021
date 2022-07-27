@@ -8,7 +8,7 @@ from wazimap_np import (
 # ensure tables are loaded
 
 PROFILE_SECTIONS = (
-    'demographics'
+    'demographics',
 )
 
 park_geo_codes = {'00000'}
@@ -27,12 +27,10 @@ def get_census_profile(geo, _profile_name, _request):
 
         for section in PROFILE_SECTIONS:
             function_name = 'get_%s_profile' % section
-            # print(''get_%s_profile' % section')
             if function_name in globals():
                 func = globals()[function_name]
                 if should_have_data(geo):
                     data[section] = func(geo, session)
-                    # Get profiles for province and/or country
                     for comp_geo in comparative_geos:
                         try:
                             merge_dicts(data[section], func(comp_geo, session), comp_geo.geo_level)
