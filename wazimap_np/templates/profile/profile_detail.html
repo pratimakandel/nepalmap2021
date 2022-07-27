@@ -10,9 +10,10 @@
 <div class="floating-nav-wrapper">
     <nav class="floating-nav">
         <div class="wrapper clearfix">
-                <h3 class="nav-title">
-                    <!-- <img src="{% static 'img/youth-logo.png' %}"> -->
-                    <a href="#profile">{{ WAZIMAP.name }}</a></h3>
+            <h3 class="nav-title">
+                <!-- <img src="{% static 'img/youth-logo.png' %}"> -->
+                <a href="#profile">{{ WAZIMAP.name }}</a>
+            </h3>
             <ul>
                 <li><a href="#demographics"><i class="fa fa-users"></i> <span>Demographics</span></a></li>
                 <li><a href="#agriculture"><i class="fa fa-leaf"></i> <span>Agriculture</span></a></li>
@@ -26,26 +27,26 @@
 {{ block.super }}
 {% endblock %}
 
- {% block profile_header_population %}
-    <span class="value">{{ demographics.total_population.values.this|nepal_format }}</span>
-    <span class="name">Population</span>
- {% endblock %}
+{% block profile_header_population %}
+<span class="value">{{ demographics.total_population.values.this|nepal_format }}</span>
+<span class="name">Population</span>
+{% endblock %}
 
 {% block profile_header_tail %}
-    <div class="column-full">
-        <p class="caption"><strong>Census data:</strong> 2011</p>
-    </div>
+<div class="column-full">
+    <p class="caption"><strong>Census data:</strong> 2021</p>
+</div>
 {% endblock %}
 
 {% block profile_detail %}
-    {% if area_has_no_data %}
-        <h2>No data available for this area</h2>
-    {% else %}
-        {% include 'profile/sections/demographics.html' %}
-        {% include 'profile/sections/agriculture.html' %}
-        {% include 'profile/sections/education.html' %}
-        {% include 'profile/sections/households.html' %}
-    {% endif %}
+{% if area_has_no_data %}
+<h2>No data available for this area</h2>
+{% else %}
+{% include 'profile/sections/demographics.html' %}
+{% include 'profile/sections/agriculture.html' %}
+{% include 'profile/sections/education.html' %}
+{% include 'profile/sections/households.html' %}
+{% endif %}
 
 
 {% endblock %}
