@@ -30,38 +30,38 @@ def get_demographics_profile(geo, session):
         }
     }
 
-    religion_data, _ = get_stat_data(['religion name'], geo, session, order_by='-total')
-    most_populous_religion = religion_data[list(religion_data.keys())[0]]
+    # religion_data, _ = get_stat_data(['religion name'], geo, session, order_by='-total')
+    # most_populous_religion = religion_data[list(religion_data.keys())[0]]
 
-    # language
-    language_data, _ = get_stat_data(['language'], geo, session, order_by='-total')
-    language_most_spoken = language_data[list(language_data.keys())[0]]
+    # # language
+    # language_data, _ = get_stat_data(['language'], geo, session, order_by='-total')
+    # language_most_spoken = language_data[list(language_data.keys())[0]]
 
-    # caste or ethnic group
-    caste_data, _ = get_stat_data(['caste or ethnic group'], geo, session, order_by='-total')
-    most_populous_caste = caste_data[list(caste_data.keys())[0]]
+    # # caste or ethnic group
+    # caste_data, _ = get_stat_data(['caste or ethnic group'], geo, session, order_by='-total')
+    # most_populous_caste = caste_data[list(caste_data.keys())[0]]
 
-    # population by disability
-    disability_dist_data, total_disabled = get_stat_data(
-        'disability', geo, session,
-        table_fields=['disability', 'sex'],
-        recode=dict(DISABILITY_RECODES),
-        key_order=DISABILITY_RECODES.values(),
-        exclude=['No disability'])
+    # # population by disability
+    # disability_dist_data, total_disabled = get_stat_data(
+    #     'disability', geo, session,
+    #     table_fields=['disability', 'sex'],
+    #     recode=dict(DISABILITY_RECODES),
+    #     key_order=DISABILITY_RECODES.values(),
+    #     exclude=['No disability'])
 
-    demographic_data.update({
-        'religion_distribution': religion_data,
-        'most_populous_religion': most_populous_religion,
-        'ethnic_distribution': caste_data,
-        'most_populous_caste': most_populous_caste,
-        'language_distribution': language_data,
-        'language_most_spoken': language_most_spoken,
-        'disability_ratio': disability_dist_data,
-        'percent_disabled': {
-            'name': 'Are disabled',
-            'values':
-                {'this': round(total_disabled / float(total_pop) * 100, 2)},
-        },
-    })
+    # demographic_data.update({
+    #     'religion_distribution': religion_data,
+    #     'most_populous_religion': most_populous_religion,
+    #     'ethnic_distribution': caste_data,
+    #     'most_populous_caste': most_populous_caste,
+    #     'language_distribution': language_data,
+    #     'language_most_spoken': language_most_spoken,
+    #     'disability_ratio': disability_dist_data,
+    #     'percent_disabled': {
+    #         'name': 'Are disabled',
+    #         'values':
+    #             {'this': round(total_disabled / float(total_pop) * 100, 2)},
+    #     },
+    # })
 
     return demographic_data
