@@ -19,8 +19,8 @@ WAZIMAP['name'] = 'NepalMap'
 WAZIMAP['url'] = URL
 WAZIMAP['country_code'] = 'NP'
 WAZIMAP['profile_builder'] = 'wazimap_np.profiles.get_census_profile'
-WAZIMAP['default_geo_version'] = '2016'
-WAZIMAP['latest_release_year'] = '2016'
+WAZIMAP['default_geo_version'] = '2021'
+WAZIMAP['latest_release_year'] = '2021'
 WAZIMAP['primary_dataset_name'] = 'National Portal'
 WAZIMAP['available_release_years'] = {}
 WAZIMAP['levels'] = {
@@ -47,7 +47,7 @@ WAZIMAP['levels'] = {
 }
 WAZIMAP['comparative_levels'] = ['country', 'province', 'district', 'local']
 WAZIMAP['geometry_data'] = {
-    '2016': {
+    '2021': {
         'country': 'geo/country.topojson',
         'province': 'geo/province.topojson',
         'district': 'geo/district.topojson',
