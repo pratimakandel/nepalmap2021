@@ -9,7 +9,7 @@ debug
 
 # Empty directories (for Compose mounts)
 static/*
-certs/*
+data/*
 
 # Keep files
 !.keep
