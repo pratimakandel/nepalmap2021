@@ -2,11 +2,28 @@
 
 set -eou pipefail
 
-: ${APP_ENV?"APP_ENV not set. Aborting !"}
+
+: ${APP_ENV?"APP_ENV not set. Aborting!"}
+
 
 if [ "$APP_ENV" = "prod" ]; then
-    exec /usr/bin/caddy --conf /etc/Caddyfile --log stdout -agree
+
+
+
+    exec caddy run --config /etc/caddy/Caddyfile --adapter caddyfile --log stdout
+
+
+
 else
-    # For stage etc. run the following, as it's not rate limited
-    exec /usr/bin/caddy -ca https://acme-staging-v02.api.letsencrypt.org/directory --conf /etc/Caddyfile --log stdout -agree
+
+
+
+    # For stage, etc., run the following as it's not rate-limited
+
+
+
+    exec caddy run --config /etc/caddy/Caddyfile --adapter caddyfile --log stdout --ca https://acme-staging-v02.api.letsencrypt.org/directory
+
+
+
 fi

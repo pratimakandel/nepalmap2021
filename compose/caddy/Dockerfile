@@ -1,3 +1,3 @@
-FROM abiosoft/caddy:0.11.5
+FROM caddy:2.6.4-alpine
 
 RUN apk add --no-cache bash
