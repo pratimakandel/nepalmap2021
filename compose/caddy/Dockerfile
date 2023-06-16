@@ -1,3 +1,3 @@
-FROM caddy:2.0.0-alpine
+FROM caddy:2.6.4-alpine
 
 RUN apk add --no-cache bash

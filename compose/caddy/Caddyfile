@@ -1,22 +1,8 @@
-{
-
-  acme_ca {$ACME_CA_URL}
-
-  email {$TLS_EMAIL}
-
-  admin off
-
-  storage file_system {
-
-    root {$STORAGE_ROOT}
-
-  }
-
-}
-
-
-
 {$HOST_NAME}
+
+
+
+tls {$TLS_EMAIL}
 
 
 
@@ -24,12 +10,42 @@ root * /static
 
 
 
-reverse_proxy {$PROXY_HOST}:{$PROXY_PORT}
+reverse_proxy / {$PROXY_HOST}:{$PROXY_PORT} {
+
+    header_up Host {host}
+
+    header_up X-Real-IP {remote}
+
+    header_up X-Forwarded-For {remote}
+
+    header_up X-Forwarded-Proto {scheme}
+
+    transport http {
+
+        read_buffer_size 4096
+
+    }
+
+}
+
+
+
+log {
+
+    output stdout
+
+}
+
+
+
+errors {
+
+    output stdout
+
+}
 
 
 
 encode gzip
 
 
-
-log
