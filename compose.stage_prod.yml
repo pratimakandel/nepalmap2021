@@ -21,13 +21,13 @@ services:
       - ./compose/caddy/Caddyfile:/etc/Caddyfile
       - ./compose/common/bin/wait-for-it:/usr/local/sbin/wait-for-it
       - ./compose/caddy/bin/start-caddy:/usr/local/sbin/start-caddy
-      - ./data:/data
+      - ./certs:/etc/caddycerts
       - ./static:/static
     environment:
       - APP_ENV
       - TLS_EMAIL
       - HOST_NAME
-      - STORAGE_ROOT=/data
+      - CADDYPATH=/etc/caddycert
       - PROXY_HOST=web
       - PROXY_PORT=8000
     ports:
