@@ -6,7 +6,7 @@ tls {$TLS_EMAIL}
 
 
 
-root * /static
+root /static
 
 
 

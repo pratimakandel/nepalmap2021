@@ -18,16 +18,16 @@ services:
     depends_on:
       - web
     volumes:
-      - ./compose/caddy/Caddyfile:/etc/Caddyfile
+      - ./compose/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./compose/common/bin/wait-for-it:/usr/local/sbin/wait-for-it
       - ./compose/caddy/bin/start-caddy:/usr/local/sbin/start-caddy
-      - ./certs:/etc/caddycerts
+      - ./certs:/etc/caddy/certs
       - ./static:/static
     environment:
       - APP_ENV
       - TLS_EMAIL
       - HOST_NAME
-      - CADDYPATH=/etc/caddycert
+      - CADDYPATH=/etc/caddy/certs
       - PROXY_HOST=web
       - PROXY_PORT=8000
     ports:
